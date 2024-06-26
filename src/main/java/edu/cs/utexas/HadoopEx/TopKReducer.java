@@ -58,7 +58,7 @@ public class TopKReducer extends  Reducer<Text, IntWritable, Text, IntWritable> 
        }
 
        // keep the priorityQueue size <= heapSize
-       while (pq.size() > 10) {
+       while (pq.size() > 3) {
            pq.poll();
        }
 
@@ -86,7 +86,7 @@ public class TopKReducer extends  Reducer<Text, IntWritable, Text, IntWritable> 
 
         for (WordAndCount value : values) {
             context.write(value.getWord(), value.getCount());
-            logger.info("TopKReducer - Top-10 Words are:  " + value.getWord() + "  Count:"+ value.getCount());
+            logger.info("TopKReducer - Top-3 Airlines are:  " + value.getWord() + "  Count:"+ value.getCount());
         }
 
 

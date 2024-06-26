@@ -38,6 +38,8 @@ public class WordCountTopKDriver extends Configured implements Tool {
 
 			Job job = new Job(conf, "WordCount");
 			job.setJarByClass(WordCountTopKDriver.class);
+			
+			job.getConfiguration().set("mapredeuce.mpa.output.compress.codec", "org.apache.hadoop.io.compress.BZip2Codec");
 
 			// specify a Mapper
 			job.setMapperClass(WordCountMapper.class);
